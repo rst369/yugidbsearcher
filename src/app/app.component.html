@@ -1,0 +1,28 @@
+<h1>Yu-Gi-Oh! Card Search</h1>
+<div id="dvInput" class="inputSearch">
+  <input type="text"/>
+</div>
+<div id="" class="hide dvResults">
+  <div id="dvCard" class="dvCard">
+    <ng-container *ngFor="let c of cardsImgs">
+      <img [src]="getUrlById(c)" (click)="showCard(c)"/>
+    </ng-container>
+  </div>
+</div>
+<div class="dvDetails">
+  <div class="dvCard">
+    <img [src]="getUrlById(card.id)">
+  </div>
+  <div class="dvTextDetails">
+    <p>Name: {{card.name}}</p>
+    <p>Card Frame: {{card.type}}</p>
+    <ng-container *ngIf="card.type.includes('Monster')">
+      <p>Level: {{card.level}}</p>
+      <p>Attribute: {{card.attribute}}</p>
+      <p>ATK: {{card.atk}}</p>
+      <p>DEF: {{card.def}}</p>
+    </ng-container>
+    <p><span *ngIf="card.type.includes('Monster')">Type:</span> <span *ngIf="card.type.includes('Spell') || card.type.includes('Trap')">Icon:</span> {{card.race}}</p>
+    <p>Description/Effect: {{card.desc}}</p>
+  </div>
+</div>
