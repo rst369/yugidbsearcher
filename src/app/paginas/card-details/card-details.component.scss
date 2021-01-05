@@ -1,0 +1,44 @@
+.inputSearch{
+    margin-bottom: 30px;
+    input{
+        width: 100%;
+        border: 1px solid black;
+        height: 35px;
+        line-height: 35px;
+        box-shadow: none;
+        outline: none;
+        border-radius: 6px;
+    padding: 0 8px;
+    }
+}
+
+.dvResults{
+    margin-bottom: 30px;
+    max-height: 550px;
+    overflow-y: auto;
+
+    .dvCard{
+        display: inline-block;
+        img{
+            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 160px;
+            cursor: pointer;
+        }
+    }
+}
+.dvDetails{
+    width: 100%;
+    border: 1px solid black;
+    height: 700px;
+    display: flex;
+    .dvCard{
+        img{
+            margin-right: 30px;
+            margin-bottom: 10px;
+        }
+    }
+    p{
+        font-size: 20px;
+    }
+}
