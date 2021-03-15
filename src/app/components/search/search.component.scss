@@ -1,0 +1,22 @@
+.inputSearch{
+    margin-bottom: 30px;
+    input{
+        width: 100%;
+        border: 1px solid black;
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+.dvResults{
+    margin-bottom: 30px;
+    .dvCard{
+        display: flex;
+        img{
+            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 214px;
+            cursor: pointer;
+        }
+    }
+}

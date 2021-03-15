@@ -1,6 +1,11 @@
 <div id="dvInput" class="inputSearch mb-4">
     <input type="text" (keyup)="searchCard($event)"/>
-</div>
+    <p>search by:</p>
+    <div class="float-left">
+      <input type="checkbox"/> 
+      <span>Type</span>
+    </div>>
+  </div>
 <div id="" class="hide dvResults">
     <div id="dvCard" class="dvCard">
       <ng-container *ngFor="let c of cardsImgs">
@@ -8,7 +13,7 @@
       </ng-container>
     </div>
   </div>
-<div class="dvDetails" *ngIf="card && card.name !== ''">
+<div class="dvDetails" *ngIf="card && card.name !== ''" >
     <div class="dvCard">
       <img [src]="getUrlById(card.id,true)">
     </div>

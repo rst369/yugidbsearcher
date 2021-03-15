@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
-import { Subject } from 'rxjs';
-import { filter,takeUntil } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Card } from 'src/app/interfaces/card';
 import { CardsdbService } from 'src/app/services/cardsdb.service';
 
@@ -29,7 +28,7 @@ export class CardDetailsComponent implements OnInit {
   searchCard(event){
     this.fname = event.target.value;
 
-    if(this.fname.length>6){
+    if(this.fname.length>=environment.lenght_search_min){
       this.cardsdb.getCardsByFName(this.fname).subscribe(response=>{
         this.cards=response;
         this.loadCards();
@@ -57,6 +56,7 @@ export class CardDetailsComponent implements OnInit {
   loadCards(){
     //debugger;
     this.cardsImgs = [];
+    this.card = null;
     if(this.cards !== undefined && this.cards.data){
       this.cards.data.forEach(c => {
         this.cardsImgs.push(c.id);
