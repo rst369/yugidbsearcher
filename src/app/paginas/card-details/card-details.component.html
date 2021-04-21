@@ -1,11 +1,32 @@
 <div id="dvInput" class="inputSearch mb-4">
-    <input type="text" (keyup)="searchCard($event)"/>
-    <p>search by:</p>
-    <div class="float-left">
-      <input type="checkbox"/> 
-      <span>Type</span>
-    </div>>
+    <input id="inputSearch" type="text" (keyup)="searchCardAttrPlus($event)"/>
+   <p>search by:</p>
+   <div class="dvCheck">
+    <input type="checkbox" id="chckName" (click)="searchCardAttrPlus($event)" checked/> 
+    <span>Name</span>
   </div>
+    <div class="dvCheck">
+      <input type="checkbox" id="chckDesc" (click)="searchCardAttrPlus($event)"/> 
+      <span>Desc</span>
+    </div>
+    <div class="dvCheck">
+      <input type="checkbox" id="chckArctp" (click)="searchCardAttrPlus($event)"/> 
+      <span>Archetype</span>
+    </div>
+    <div class="dvCheck">
+      <input type="checkbox" id="chckSpell" (click)="searchCardAttrPlus($event)"/> 
+      <span>Spell</span>
+    </div>
+    <div class="dvCheck">
+      <input type="checkbox" id="chckMonster" (click)="searchCardAttrPlus($event)"/> 
+      <span>Monster</span>
+    </div>
+    
+    <br/> 
+  </div>
+  <input type="hidden" id="debugMental"/> 
+  <input type="hidden" id="debugApi"/> 
+  <br/>
 <div id="" class="hide dvResults">
     <div id="dvCard" class="dvCard">
       <ng-container *ngFor="let c of cardsImgs">

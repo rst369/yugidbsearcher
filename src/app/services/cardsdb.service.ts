@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Card } from '../interfaces/card';
 
 @Injectable({
@@ -62,7 +63,25 @@ export class CardsdbService {
     return [this.card1,this.card2,this.card3];
  }
 
- getCardsByFName(fname):Observable<Card[]>{
-   return this.http.get<Card[]>("https://db.ygoprodeck.com/api/v7/cardinfo.php?fname="+fname);
+ getCardsByFName(fname:String):Observable<Card[]>{
+   return this.http.get<Card[]>(environment.api_url+"?fname="+fname);
  }
+ getCardsByAttr(attr:String, value:String):Observable<Card[]>{
+  return this.http.get<Card[]>(environment.api_url+"?"+attr+"="+value);
+}
+getCardsByAttrs(attr:String[], value:String[]):Observable<Card[]>{
+  
+  var urlQuery = environment.api_url+"?";
+  var params=""
+  for(var i=0;i<attr.length;i++){
+    params+=attr[i]+"="+value[i];
+    if(i!=attr.length-1)
+      params+="&";
+  }
+  if(params=="")
+    return;
+
+  return this.http.get<Card[]>(urlQuery+params);
+}
+
 }

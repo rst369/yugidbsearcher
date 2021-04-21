@@ -36,12 +36,81 @@ export class CardDetailsComponent implements OnInit {
     }
   }
 
+  searchCardAttr(event){
+    var input = <HTMLInputElement>document.getElementById("inputSearch");
+    var value = input.value;
+    var chk = <HTMLInputElement>document.getElementById("chckDesc");
+
+    var attr;
+    //alert("chk: "+ chk.checked);
+
+  if(chk.checked)
+    attr = "desc";
+  else
+    attr = "fname";
+
+    if(value.length>=environment.lenght_search_min){
+      this.cardsdb.getCardsByAttr(attr,value).subscribe(response=>{
+        this.cards=response;
+        this.loadCards();
+      });
+    }
+  }
+
+  searchCardAttrPlus(event){
+    
+    var input = <HTMLInputElement>document.getElementById("inputSearch");
+    var inputValue = input.value;
+    var chkName = <HTMLInputElement>document.getElementById("chckName");
+    var chkDesc = <HTMLInputElement>document.getElementById("chckDesc");
+    var chkSpell = <HTMLInputElement>document.getElementById("chckSpell");
+    var chckMonster = <HTMLInputElement>document.getElementById("chckMonster");
+    var chckArctp = <HTMLInputElement>document.getElementById("chckArctp");
+
+    var attr = [];
+    var values = [];
+    
+  if(chkName.checked){
+      attr.push(environment.name_attr);
+      values.push(inputValue);  
+  }
+    
+  if(chkDesc.checked){
+    attr.push(environment.desc_attr);
+    values.push(inputValue);  
+  }
+
+  if(chckArctp.checked){
+    attr.push(environment.archetype_attr);
+    values.push(inputValue);  
+  }
+  
+  if(chkSpell.checked){
+    attr.push(environment.type_attr);
+    values.push(environment.spell_type);
+  }
+
+  if(chckMonster.checked){
+    attr.push(environment.type_attr);
+    values.push(environment.monster_type);
+  }
+
+
+
+    if(inputValue.length>=environment.lenght_search_min){
+      this.cardsdb.getCardsByAttrs(attr,values).subscribe(response=>{
+        this.cards=response;
+        this.loadCards();
+      });
+    }
+  }
+
   getUrlById(id,larger){
     let img ="";
     if(larger)
-      img = "https://storage.googleapis.com/ygoprodeck.com/pics/"+id+".jpg";
+      img = environment.pics_url+id+".jpg";
     else
-      img = "https://storage.googleapis.com/ygoprodeck.com/pics_small/"+id+".jpg";
+      img = environment.pics_small_url+id+".jpg";
     return img;
   }
  
