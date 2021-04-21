@@ -78,8 +78,8 @@ getCardsByAttrs(attr:String[], value:String[]):Observable<Card[]>{
     if(i!=attr.length-1)
       params+="&";
   }
-  if(params=="")
-    return;
+ // if(params=="")
+   // return null;
 
   return this.http.get<Card[]>(urlQuery+params);
 }

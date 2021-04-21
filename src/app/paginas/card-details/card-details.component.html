@@ -1,60 +1,61 @@
 <div id="dvInput" class="inputSearch mb-4">
-    <input id="inputSearch" type="text" (keyup)="searchCardAttrPlus($event)"/>
-   <p>search by:</p>
-   <div class="dvCheck">
-    <input type="checkbox" id="chckName" (click)="searchCardAttrPlus($event)" checked/> 
-    <span>Name</span>
-  </div>
-    <div class="dvCheck">
-      <input type="checkbox" id="chckDesc" (click)="searchCardAttrPlus($event)"/> 
-      <span>Desc</span>
-    </div>
-    <div class="dvCheck">
-      <input type="checkbox" id="chckArctp" (click)="searchCardAttrPlus($event)"/> 
-      <span>Archetype</span>
-    </div>
-    <div class="dvCheck">
-      <input type="checkbox" id="chckSpell" (click)="searchCardAttrPlus($event)"/> 
-      <span>Spell</span>
-    </div>
-    <div class="dvCheck">
-      <input type="checkbox" id="chckMonster" (click)="searchCardAttrPlus($event)"/> 
-      <span>Monster</span>
-    </div>
-    
-    <br/> 
-  </div>
-  <input type="hidden" id="debugMental"/> 
-  <input type="hidden" id="debugApi"/> 
-  <br/>
+	<input id="inputSearch" type="text" (keyup)="searchCardAttrPlus($event)" />
+	<p>search by:</p>
+	<section class="sectionChecks">
+
+		<div class="dvCheck">
+			<input type="checkbox" id="chckName" (click)="searchCardAttrPlus($event)" checked />
+			<span>Name</span>
+		</div>
+		<div class="dvCheck">
+			<input type="checkbox" id="chckDesc" (click)="searchCardAttrPlus($event)" />
+			<span>Desc</span>
+		</div>
+		<div class="dvCheck">
+			<input type="checkbox" id="chckArctp" (click)="searchCardAttrPlus($event)" />
+			<span>Archetype</span>
+		</div>
+		<div class="dvCheck">
+			<input type="checkbox" id="chckSpell" (click)="searchCardAttrPlus($event)" />
+			<span>Spell</span>
+		</div>
+		<div class="dvCheck">
+			<input type="checkbox" id="chckMonster" (click)="searchCardAttrPlus($event)" />
+			<span>Monster</span>
+		</div>
+
+	</section>
+</div>
+<p class="d-block" *ngIf="cardsImgs.length>0">Search Results: {{cardsImgs.length}}</p>
+
 <div id="" class="hide dvResults">
-    <div id="dvCard" class="dvCard">
-      <ng-container *ngFor="let c of cardsImgs">
-        <img [src]="getUrlById(c, false)" (click)="showCard(c)" title="click to enlarge"/>
-      </ng-container>
-    </div>
-  </div>
-<div class="dvDetails" *ngIf="card && card.name !== ''" >
-    <div class="dvCard">
-      <img [src]="getUrlById(card.id,true)">
-    </div>
-    <div class="dvTextDetails">
-      <p>Name: {{card.name}}</p>
-      <p>Card Frame: {{card.type}}</p>
-      <ng-container *ngIf="card.type.includes('Monster')">
-        <p>Level: {{card.level}}</p>
-        <p>Attribute: {{card.attribute}}</p>
-        <p>ATK: {{card.atk}}</p>
-        <p>DEF: {{card.def}}</p>
-      </ng-container>
-      <p>
-        <span *ngIf="card.type.includes('Monster')">Type:</span> 
-        <span *ngIf="card.type.includes('Spell') || card.type.includes('Trap')">Icon:</span> 
-        {{card.race}}
-      </p>
-      <p>
-        <span *ngIf="card.type.includes('Monster')">Description/</span> 
-      Effect: {{card.desc}}
-      </p>
-    </div>
-  </div>
+	<div id="dvCard" class="dvCard">
+		<ng-container *ngFor="let c of cardsImgs">
+			<img [src]="getUrlById(c, false)" (click)="showCard(c)" title="click to enlarge" />
+		</ng-container>
+	</div>
+</div>
+<div class="dvDetails" *ngIf="card && card.name !== ''">
+	<div class="dvCard">
+		<img [src]="getUrlById(card.id,true)">
+	</div>
+	<div class="dvTextDetails">
+		<p>Name: {{card.name}}</p>
+		<p>Card Frame: {{card.type}}</p>
+		<ng-container *ngIf="card.type.includes('Monster')">
+			<p>Level: {{card.level}}</p>
+			<p>Attribute: {{card.attribute}}</p>
+			<p>ATK: {{card.atk}}</p>
+			<p>DEF: {{card.def}}</p>
+		</ng-container>
+		<p>
+			<span *ngIf="card.type.includes('Monster')">Type:</span>
+			<span *ngIf="card.type.includes('Spell') || card.type.includes('Trap')">Icon:</span>
+			{{card.race}}
+		</p>
+		<p>
+			<span *ngIf="card.type.includes('Monster')">Description/</span>
+			Effect: {{card.desc}}
+		</p>
+	</div>
+</div>

@@ -98,9 +98,14 @@ export class CardDetailsComponent implements OnInit {
 
 
     if(inputValue.length>=environment.lenght_search_min){
-      this.cardsdb.getCardsByAttrs(attr,values).subscribe(response=>{
+      var  response =  this.cardsdb.getCardsByAttrs(attr,values);
+      
+      response.subscribe(response=>{
+        console.log(response);
         this.cards=response;
         this.loadCards();
+      },error=>{
+        console.log(error);
       });
     }
   }

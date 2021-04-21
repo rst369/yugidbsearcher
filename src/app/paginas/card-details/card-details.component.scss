@@ -1,6 +1,9 @@
-.inputSearch{
+.inputSearch {
     margin-bottom: 30px;
-    input{
+    display: block;
+    width: 100%;
+
+    input[type=text] {
         width: 100%;
         border: 1px solid black;
         height: 35px;
@@ -8,18 +11,23 @@
         box-shadow: none;
         outline: none;
         border-radius: 6px;
-    padding: 0 8px;
+        padding: 0 8px;
+    }
+
+    .sectionChecks {
+        overflow: hidden;
     }
 }
 
-.dvResults{
+.dvResults {
     margin-bottom: 30px;
     max-height: 550px;
     overflow-y: auto;
 
-    .dvCard{
+    .dvCard {
         display: inline-block;
-        img{
+
+        img {
             margin-right: 10px;
             margin-bottom: 10px;
             width: 160px;
@@ -27,25 +35,73 @@
         }
     }
 }
-.dvDetails{
+
+.dvDetails {
     width: 100%;
     border: 1px solid black;
     height: 700px;
     display: flex;
 
-    .dvCard{
-        img{
+    .dvCard {
+        img {
             margin-right: 30px;
             margin-bottom: 10px;
         }
     }
-    p{
+
+    p {
         font-size: 20px;
     }
 }
 
-.dvCheck{
-float:left;
-margin-left: 10px;
+.dvCheck {
+    float: left;
+    margin-left: 10px;
+    width: 75px;
+
+    &:first-of-type {
+        margin-left: 0px;
+    }
+
+    input[type=checkbox] {
+        border: 1px solid black;
+        height: 75px;
+        width: 75px;
+        box-shadow: none;
+        outline: none;
+        border-radius: 6px;
+        padding: 0 8px;
+        margin: 0 auto;
+        display: block;
+
+        &:before {
+            transition-timing-function: cubic-bezier(.075, .820, .165, 1);
+            border: 2px solid;
+            border-radius: 0;
+            background-color: white;
+            border-color: transparent;
+            box-sizing: border-box;
+            color: #cc1717;
+            content: close-quote;
+            display: inline-block;
+            height: 75px;
+            outline: 2px solid #cc1717;
+            transition-duration: .5s;
+            transition-property: background-color, border-color;
+            width: 75px;
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+
+        &:checked:before {
+            background-color: #cc1717;
+            border-color: white;
+        }
+    }
+
+    span {
+        display: block;
+        text-align: center;
+    }
 
 }
