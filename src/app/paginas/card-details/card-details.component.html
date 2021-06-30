@@ -57,5 +57,15 @@
 			<span *ngIf="card.type.includes('Monster')">Description/</span>
 			Effect: {{card.desc}}
 		</p>
+		<p>
+			<span>Sets ({{card.card_sets.length}}): </span>
+		</p>
+		<p>
+			<ng-container *ngFor="let s of card.card_sets; let i = index">
+				{{s.set_name}}<span *ngIf="i!=(card.card_sets.length-1)"> ; </span>
+			</ng-container>
+		</p>
+
+
 	</div>
 </div>
