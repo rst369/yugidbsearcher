@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Card } from '../interfaces/card';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class CardsdbService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   card = {
     name: "Dark Magician",
@@ -22,7 +23,7 @@ export class CardsdbService {
     attribute: "DARK",
     id: 46986414
   };
-  
+
   card1 = {
     name: "Dark Magician",
     type: "Normal Monster",
@@ -34,7 +35,7 @@ export class CardsdbService {
     attribute: "DARK",
     id: 46986414
   };
-  
+
   card2 = {
     name: "Dark Magical Circle",
     type: "Spell Card",
@@ -46,7 +47,7 @@ export class CardsdbService {
     attribute: "",
     id: 47222536
   };
-  
+
   card3 = {
     name: "Witchcrafter Madame Verre",
     type: "Effect Monster",
@@ -59,29 +60,29 @@ export class CardsdbService {
     id: 21522601
   }
 
-  getMockCards(){
-    return [this.card1,this.card2,this.card3];
- }
-
- getCardsByFName(fname:String):Observable<Card[]>{
-   return this.http.get<Card[]>(environment.api_url+"?fname="+fname);
- }
- getCardsByAttr(attr:String, value:String):Observable<Card[]>{
-  return this.http.get<Card[]>(environment.api_url+"?"+attr+"="+value);
-}
-getCardsByAttrs(attr:String[], value:String[]):Observable<Card[]>{
-  
-  var urlQuery = environment.api_url+"?";
-  var params=""
-  for(var i=0;i<attr.length;i++){
-    params+=attr[i]+"="+value[i];
-    if(i!=attr.length-1)
-      params+="&";
+  getMockCards() {
+    return [this.card1, this.card2, this.card3];
   }
- // if(params=="")
-   // return null;
 
-  return this.http.get<Card[]>(urlQuery+params);
-}
+  getCardsByFName(fname: String): Observable<Card[]> {
+    return this.http.get<Card[]>(environment.api_url + "?fname=" + fname);
+  }
+  getCardsByAttr(attr: String, value: String): Observable<Card[]> {
+    return this.http.get<Card[]>(environment.api_url + "?" + attr + "=" + value);
+  }
+  getCardsByAttrs(attr: String[], value: String[]): Observable<Card[]> {
+
+    var urlQuery = environment.api_url + "?";
+    var params = ""
+    for (var i = 0; i < attr.length; i++) {
+      params += attr[i] + "=" + value[i];
+      if (i != attr.length - 1)
+        params += "&";
+    }
+    // if(params=="")
+    // return null;
+
+    return this.http.get<Card[]>(urlQuery + params);
+  }
 
 }
