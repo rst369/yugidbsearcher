@@ -7,15 +7,16 @@ export const environment = {
   lenght_search_min: 3,
   api_url: "https://db.ygoprodeck.com/api/v7/cardinfo.php",
   pics_url: "https://storage.googleapis.com/ygoprodeck.com/pics/",
-  pics_small_url:"https://storage.googleapis.com/ygoprodeck.com/pics/",
-  spell_type:"Spell Card",
-  monster_type:"Normal Monster,Effect Monster,Ritual Monster,Ritual Effect Monster,Link Monster,Fusion Monster",
+  pics_small_url: "https://storage.googleapis.com/ygoprodeck.com/pics/",
+  spell_type: "Spell Card",
+  monster_type: "Normal Monster,Effect Monster,Ritual Monster,Ritual Effect Monster,Link Monster,Fusion Monster",
   desc_attr: "desc",
   name_attr: "fname",
   type_attr: "type",
-  archetype_attr:"archetype",
-  limit_results_flag:true,
-  limit_results_number:15
+  archetype_attr: "archetype",
+  limit_results_flag: true,
+  limit_results_number: 15,
+  set_attr: "set"
 };
 
 /*

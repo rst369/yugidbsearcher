@@ -66,6 +66,7 @@ export class CardDetailsComponent implements OnInit {
     var chkSpell = <HTMLInputElement>document.getElementById("chckSpell");
     var chckMonster = <HTMLInputElement>document.getElementById("chckMonster");
     var chckArctp = <HTMLInputElement>document.getElementById("chckArctp");
+    var chckSet = <HTMLInputElement>document.getElementById("chckSet");
 
     var attr = [];
     var values = [];
@@ -93,6 +94,11 @@ export class CardDetailsComponent implements OnInit {
     if (chckMonster.checked) {
       attr.push(environment.type_attr);
       values.push(environment.monster_type);
+    }
+
+    if (chckSet.checked) {
+      attr.push(environment.set_attr);
+      values.push(inputValue);
     }
 
 
