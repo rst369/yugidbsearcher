@@ -12,31 +12,31 @@ import { CardsdbService } from 'src/app/services/cardsdb.service';
 })
 export class CardDetailsComponent implements OnInit {
 
-  cardsImgs: Array<any>=[];
+  cardsImgs: Array<any> = [];
   card: Card;
   cards: any;
-  fname:String;
+  fname: String;
 
-  constructor(private  cardsdb:CardsdbService, private router:Router){
+  constructor(private cardsdb: CardsdbService, private router: Router) {
     //this.cards = cardsdb.getMockCards();
   }
 
   ngOnInit(): void {
-    
+
   }
 
-  searchCard(event){
+  searchCard(event) {
     this.fname = event.target.value;
 
-    if(this.fname.length>=environment.lenght_search_min){
-      this.cardsdb.getCardsByFName(this.fname).subscribe(response=>{
-        this.cards=response;
+    if (this.fname.length >= environment.lenght_search_min) {
+      this.cardsdb.getCardsByFName(this.fname).subscribe(response => {
+        this.cards = response;
         this.loadCards();
       });
     }
   }
 
-  searchCardAttr(event){
+  searchCardAttr(event) {
     var input = <HTMLInputElement>document.getElementById("inputSearch");
     var value = input.value;
     var chk = <HTMLInputElement>document.getElementById("chckDesc");
@@ -44,21 +44,21 @@ export class CardDetailsComponent implements OnInit {
     var attr;
     //alert("chk: "+ chk.checked);
 
-  if(chk.checked)
-    attr = "desc";
-  else
-    attr = "fname";
+    if (chk.checked)
+      attr = "desc";
+    else
+      attr = "fname";
 
-    if(value.length>=environment.lenght_search_min){
-      this.cardsdb.getCardsByAttr(attr,value).subscribe(response=>{
-        this.cards=response;
+    if (value.length >= environment.lenght_search_min) {
+      this.cardsdb.getCardsByAttr(attr, value).subscribe(response => {
+        this.cards = response;
         this.loadCards();
       });
     }
   }
 
-  searchCardAttrPlus(event){
-    
+  searchCardAttrPlus(event) {
+
     var input = <HTMLInputElement>document.getElementById("inputSearch");
     var inputValue = input.value;
     var chkName = <HTMLInputElement>document.getElementById("chckName");
@@ -69,76 +69,77 @@ export class CardDetailsComponent implements OnInit {
 
     var attr = [];
     var values = [];
-    
-  if(chkName.checked){
+
+    if (chkName.checked) {
       attr.push(environment.name_attr);
-      values.push(inputValue);  
-  }
-    
-  if(chkDesc.checked){
-    attr.push(environment.desc_attr);
-    values.push(inputValue);  
-  }
+      values.push(inputValue);
+    }
 
-  if(chckArctp.checked){
-    attr.push(environment.archetype_attr);
-    values.push(inputValue);  
-  }
-  
-  if(chkSpell.checked){
-    attr.push(environment.type_attr);
-    values.push(environment.spell_type);
-  }
+    if (chkDesc.checked) {
+      attr.push(environment.desc_attr);
+      values.push(inputValue);
+    }
 
-  if(chckMonster.checked){
-    attr.push(environment.type_attr);
-    values.push(environment.monster_type);
-  }
+    if (chckArctp.checked) {
+      attr.push(environment.archetype_attr);
+      values.push(inputValue);
+    }
+
+    if (chkSpell.checked) {
+      attr.push(environment.type_attr);
+      values.push(environment.spell_type);
+    }
+
+    if (chckMonster.checked) {
+      attr.push(environment.type_attr);
+      values.push(environment.monster_type);
+    }
 
 
 
-    if(inputValue.length>=environment.lenght_search_min){
-      var  response =  this.cardsdb.getCardsByAttrs(attr,values);
-      
-      response.subscribe(response=>{
+    if (inputValue.length >= environment.lenght_search_min) {
+      var response = this.cardsdb.getCardsByAttrs(attr, values);
+
+      response.subscribe(response => {
         console.log(response);
-        this.cards=response;
+        this.cards = response;
         this.loadCards();
-      },error=>{
+      }, error => {
         console.log(error);
       });
     }
   }
 
-  getUrlById(id,larger){
-    let img ="";
-    if(larger)
-      img = environment.pics_url+id+".jpg";
+  getUrlById(id, larger) {
+    let img = "";
+    if (larger)
+      img = environment.pics_url + id + ".jpg";
     else
-      img = environment.pics_small_url+id+".jpg";
+      img = environment.pics_small_url + id + ".jpg";
     return img;
   }
- 
-  showCard(id){
+
+  showCard(id) {
+    debugger;
     let cardTmp = this.cards.data.find(c => c.id == id);
-    if(cardTmp !== undefined) 
-      this.card = cardTmp; 
+    if (cardTmp !== undefined)
+      this.card = cardTmp;
     else
       alert("Dados não Encontrados");
   }
 
-  loadCards(){
+  loadCards() {
     //debugger;
     this.cardsImgs = [];
     this.card = null;
-    if(this.cards !== undefined && this.cards.data){
+    if (this.cards !== undefined && this.cards.data) {
       this.cards.data.forEach(c => {
         this.cardsImgs.push(c.id);
       });
     }
   }
-  
-  enlarge(url){
+
+  enlarge(url) {
     window.open(url);
   }
 
