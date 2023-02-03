@@ -126,7 +126,6 @@ export class CardDetailsComponent implements OnInit {
   }
 
   showCard(id) {
-    debugger;
     let cardTmp = this.cards.data.find(c => c.id == id);
     if (cardTmp !== undefined)
       this.card = cardTmp;
@@ -135,7 +134,6 @@ export class CardDetailsComponent implements OnInit {
   }
 
   loadCards() {
-    //debugger;
     this.cardsImgs = [];
     this.card = null;
     if (this.cards !== undefined && this.cards.data) {
