@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   lenght_search_min: 3,
-  api_url: "https://db.ygoprodeck.com/api/v7/cardinfo.php",
+  api_url: "https://db.ygoprodeck.com/api/v7/cardinfo.php",//para chamar diretamente a api usando angular
+  //api_url: "http://localhost:8080/yuigisearch?params=",//para chamar localhost com java
   pics_url: "https://images.ygoprodeck.com/images/cards/",
   pics_small_url: "https://images.ygoprodeck.com/images/cards/",
   spell_type: "Spell Card",
